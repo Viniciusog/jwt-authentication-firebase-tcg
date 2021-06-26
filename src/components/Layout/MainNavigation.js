@@ -10,6 +10,13 @@ const MainNavigation = () => {
 
   const isLoggedIn = authContext.isLoggedIn
 
+  //Iremos deslogar o usuário
+  const logoutHandler = () => {
+    authContext.logout()
+    //AQUI IRÍAMOS UTILIZAR HISTORY PARA MANDAR O USUÁRIO DE VOLTA PARA A TELA DE LOGIN,
+    //PORÉM PODEMOS UTILIZAR PROTECTED URLS PARA REALIZAR ESSA FUNÇão
+  }
+
   return (
     <header className={classes.header}>
       <Link to='/'>
@@ -28,7 +35,7 @@ const MainNavigation = () => {
 
           {isLoggedIn &&
             (<li>
-              <button>Logout</button>
+              <button onClick={logoutHandler}>Logout</button>
             </li>)
           }
 

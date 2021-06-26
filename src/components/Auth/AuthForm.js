@@ -1,6 +1,6 @@
 import { useRef, useState, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import classes from './AuthForm.module.css';
 
@@ -45,12 +45,14 @@ const AuthForm = () => {
           if (res.ok) {
             //Passa de json para objeto javascript
             return res.json().then(data => {
-             //Atualizar o context auth
-             authContext.login(data.idToken)
-             //Enviar usuário para página principal
-             history.replace("/")
+              //Atualizar o context auth
+              const expiresIn = new Date(new Date().getTime() + (+data.expiresIn * 1000))
+            
+              authContext.login(data.idToken, expiresIn.toISOString())
+              //Enviar usuário para página principal
+              history.replace("/")
             })
-          } 
+          }
           //Se der errado o login, a mensagem está no corpo da resposta
           else {
             return res.json().then(data => {
@@ -73,7 +75,7 @@ const AuthForm = () => {
           headers: {
             'Content-Type': 'application/json'
           }
-          
+
         }).then(res => {
           setIsLoading(false)
           //Se der certo o cadastro
@@ -82,7 +84,9 @@ const AuthForm = () => {
             return res.json().then(data => {
               //Cadastrado com sucesso 
               //(obs: o firebase retorna idToken tanto para cadastro com sucesso quanto para login com sucesso)
-              authContext.login(data.idToken)
+              //A data de expiração é a data atual (em milissegundos) + expiresIn (segundos) transformados em milissegundos
+              const expiresIn = new Date(new Date().getTime() + (+data.expiresIn * 1000))
+              authContext.login(data.idToken, expiresIn.toISOString()) //Estamos passando como string pois recebemos como string em authContext
               //Enviar o usuário para a página principal
               history.replace("/")
             })

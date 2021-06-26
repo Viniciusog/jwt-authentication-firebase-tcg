@@ -1,9 +1,13 @@
 import { useRef, useState, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
+import {useHistory} from 'react-router-dom'
 
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
+
+  const history = useHistory()
+
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
 
@@ -43,6 +47,8 @@ const AuthForm = () => {
             return res.json().then(data => {
              //Atualizar o context auth
              authContext.login(data.idToken)
+             //Enviar usuário para página principal
+             history.replace("/")
             })
           } 
           //Se der errado o login, a mensagem está no corpo da resposta
@@ -77,6 +83,8 @@ const AuthForm = () => {
               //Cadastrado com sucesso 
               //(obs: o firebase retorna idToken tanto para cadastro com sucesso quanto para login com sucesso)
               authContext.login(data.idToken)
+              //Enviar o usuário para a página principal
+              history.replace("/")
             })
           }
           //Se tiver dado erro, o firebase irá retornar uma mensagem de erro no corpo da resposta

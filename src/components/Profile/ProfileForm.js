@@ -1,8 +1,11 @@
 import classes from './ProfileForm.module.css';
 import {useRef, useContext} from "react"
 import AuthContext from '../../store/auth-context';
+import {useHistory} from "react-router-dom"
 
 const ProfileForm = () => {
+
+  const history = useHistory()
 
   const newPasswordInputRef = useRef()
   
@@ -29,6 +32,8 @@ const ProfileForm = () => {
       if (response.ok) {
         return response.json().then(data => {
           alert("Senha alterada com sucesso!")
+          //Enviar usuário para a página principal
+          history.replace("/")
         })
       } 
       //Se der erro na alteração da senha

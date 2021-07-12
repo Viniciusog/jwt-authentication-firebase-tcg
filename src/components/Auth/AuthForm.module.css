@@ -3,7 +3,7 @@
   width: 95%;
   max-width: 25rem;
   border-radius: 6px;
-  background-color: #38015c;
+  background-color: #87ACA3;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   text-align: center;
@@ -21,7 +21,7 @@
 
 .control label {
   display: block;
-  color: white;
+  color: rgb(36, 36, 36);
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -29,7 +29,7 @@
 .control input {
   font: inherit;
   background-color: #f1e1fc;
-  color: #38015c;
+  color: #0e2c30;
   border-radius: 4px;
   border: 1px solid white;
   width: 100%;
@@ -47,27 +47,27 @@
 .actions button {
   cursor: pointer;
   font: inherit;
-  color: white;
-  background-color: #9f5ccc;
-  border: 1px solid #9f5ccc;
+  color: rgb(255, 255, 255);
+  background-color: #2B7C85;
+  border: 1px solid #2B7C85;
   border-radius: 4px;
   padding: 0.5rem 2.5rem;
 }
 
 .actions button:hover {
-  background-color: #873abb;
-  border-color: #873abb;
+  background-color: #35949e;
+  border-color: #399da8;
 }
 
 .actions .toggle {
   margin-top: 1rem;
   background-color: transparent;
-  color: #9f5ccc;
+  color: #3a3a3a;
   border: none;
   padding: 0.15rem 1.5rem;
 }
 
 .actions .toggle:hover {
   background-color: transparent;
-  color: #ae82cc;
+  color: #000000;
 }

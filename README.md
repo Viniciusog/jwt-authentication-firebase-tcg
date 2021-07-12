@@ -8,3 +8,14 @@ React application with Jwt/firebase authentication
 npm install
 npm start
 ```
+### Home page
+
+![Home](https://github.com/Viniciusog/jwt-authentication-firebase-tcg/blob/main/src/assets/Welcome.png)
+
+### SignUp
+
+![SignUp](https://github.com/Viniciusog/jwt-authentication-firebase-tcg/blob/main/src/assets/Signup.png)
+
+### Token and expiration time
+
+![TokenAndExpirationTime](https://github.com/Viniciusog/jwt-authentication-firebase-tcg/blob/main/src/assets/JwtToken.png)
